@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="NotoKufiArabic-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="./fonts/DINNextLTArabic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <title>Customizable Greeting Cards</title>
+  <style>
+    /* Custom Font */
+    @font-face {
+  font-family: 'DIN Next LT Arabic';
+  src: url('./DINNextLTArabic-Regular.woff2') format('woff2'),
+       url('./DINNextLTArabic-Regular.woff') format('woff'),
+       url('./DINNextLTArabic-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoKufiArabic';
+  src: url('./NotoKufiArabic-Regular.woff2') format('woff2'),
+       url('./NotoKufiArabic-Regular.woff') format('woff'),
+       url('./NotoKufiArabic-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+    /* Global Styling */
+    body {
+      margin: 0;
+      padding-top: 88px; /* Match the height of the fixed header */
+      font-family: 'NotoKufiArabic', sans-serif;
+      background-image: linear-gradient(90deg, #3C8BFF 1%, #5E46FF 100%);
+      
+      ;
+      background-size: cover;
+      display: flex;
+      flex-direction: column; /* Allow stacking of elements */
+      align-items: center;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden; /* Prevent scrolling during animation */
+    }
+
+    /* Header Styling */
+/* General Header Styling */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 88px;
+  background: #000000;
+  display: flex;
+  justify-content: center; /* Center both the LinkedIn section and the button */
+  align-items: center; /* Vertically align items */
+  padding: 0 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 400px; /* Add subtle space between LinkedIn section and the button */
+}
+
+.header-logo {
+  display: flex;
+  align-items: center; /* Align the LinkedIn icon and name vertically */
+}
+
+.linkedin-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.linkedin-icon {
+  height: 35px; /* Icon size */
+  width: 35px;
+  margin-right: 10px; /* Space between the icon and the name */
+  position: relative; /* Enable positioning adjustments */
+  top: -1px; /* Move the icon upward slightly */
+}
+.name-text {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+/* Right Section: Dropdown Button */
+.header-right {
+  display: flex;
+  align-items: center; /* Keep the button vertically aligned */
+  position: relative; /* Enable positioning adjustments for the button */
+}
+
+.menu-button {
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px; /* Add padding for better click area */
+  position: relative; /* Allow fine-tuning of position */
+  top: -9px; /* Move the button upward slightly */
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%; /* Position below the button */
+  right: 0;
+  background: #1A1A1A;
+  border: 1px solid #333;
+  border-radius: 5px;
+  width: 200px;
+  text-align: right;
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.dropdown-menu a:hover {
+  background: #333;
+  color: #5E46FF; /* Gold color for hover */
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .header {
+    justify-content: center; /* Center everything on mobile */
+    height: auto;
+    padding: 16px 15px;
+    gap: 55px; /* Reduce spacing for smaller screens */
+  }
+
+  .linkedin-icon {
+    height: 35px; /* Shrink icon size for mobile */
+    width: 35px;
+  }
+
+  .name-text {
+    font-size: 0.9rem; /* Slightly smaller font size for name */
+  }
+
+  .menu-button {
+    font-size: 0.9rem; /* Slightly smaller button text */
+  }
+
+  .dropdown-menu {
+    width: 100%; /* Full width for mobile screens */
+    border-radius: 0; /* Remove rounded corners */
+    text-align: center;
+  }
+
+  .dropdown-menu a {
+    padding: 10px 0; /* Add spacing for touch-friendly links */
+  }
+}
+/* Banner Styling */
+.banner {
+    width: 100%;
+    padding: 80px 0;
+    background: #ffffff;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.banner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+/* Gradient Text Styles */
+.banner-title {
+    background: linear-gradient(90deg, #3C8BFF 0%, #5E46FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.banner-description {
+    color: #4A5568; /* Neutral text color */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Updated Subtitle Styling */
+.banner-subtitle-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.banner-subtitle span {
+    background: #FFFFFF;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    border-bottom: 2px solid #5E46FF; /* Use gradient color for border */
+    padding-bottom: 8px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .banner-container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    .banner-infographic {
+        order: 2;
+        justify-content: center;
+    }
+
+    .banner-content {
+        order: 1;
+        text-align: right;
+        padding: 0;
+    }
+
+    .banner-title {
+        font-size: 1.8rem;
+    }
+
+    .banner-description {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .banner-container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    .banner-infographic {
+        order: 2; /* Moves below content */
+        justify-content: center;
+    }
+
+    .banner-content {
+        order: 1; /* Stays on top */
+        text-align: right;
+        padding: 0;
+    }
+
+    .banner-title {
+        font-size: 1.8rem;
+    }
+
+    .banner-description {
+        font-size: 1rem;
+    }
+}
+
+/* Infographic Section */
+.infographic {
+    flex: 1;
+    position: relative;
+    padding: 30px 0;
+}
+
+.infographic-frame {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.3s ease;
+}
+
+.infographic-frame:hover {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+.infographic-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.graphic-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(60, 139, 255, 0.1), rgba(94, 70, 255, 0.1));
+    z-index: 2;
+}
+
+/* CTA Button */
+.cta-container {
+    margin-top: 40px;
+}
+
+.cta-button {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .banner-container {
+        gap: 40px;
+        padding: 0 20px;
+    }
+    
+    .banner-title {
+        font-size: 2.4rem;
+    }
+    
+    .company-name {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .banner-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .content-wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .infographic {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .infographic-frame {
+        transform: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-title {
+        font-size: 2rem;
+        line-height: 1.4;
+    }
+    
+    .company-name {
+        font-size: 1.6rem;
+        margin-top: 10px;
+    }
+    
+    .banner-description {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
+.banner-subtitle-area {
+  width: 100%; /* Full width */
+  display: flex; /* Use flex to better control the inner paragraph */
+  justify-content: center; /* Center content horizontally */
+  padding-top: 60px; /* Top padding to push content down */
+  padding-bottom: 10px; /* Bottom padding for balanced spacing */
+}
+
+.banner-subtitle {
+  color: #ffffff; /* Specific green color */
+  font-weight: normal; /* Bold text */
+  font-size: 1.5rem; /* Appropriate text size */
+  margin: 0; /* Remove default margin */
+  max-width: 1200px; /* Match the header content width */
+  width: 100%; /* Full width to utilize the max-width properly */
+  padding-right: 20px; /* Right padding to align with the header logo if it's right-aligned */
+  box-sizing: border-box; /* Includes padding in the width calculation */
+  text-align: right; /* Text aligned to the right within its block */
+}
+
+.banner-subtitle span {
+  border-bottom: 2px solid #ffffff; /* Green line under the text */
+  padding-bottom: 8px; /* Padding below the text to space out the border */
+}
+
+/* Bold styling for larger screens */
+@media (min-width: 768px) {
+  .banner-subtitle {
+    font-weight: bold; /* Make the text bold */
+  }
+}
+    /* Frame Styling */
+.frame {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: #F8FAFC;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex container for canvas and details */
+.frame-content {
+  display: flex;
+  flex-direction: column; /* Default: stack vertically */
+  gap: 20px; /* Space between canvas and details */
+}
+
+/* Canvas and Button Container */
+.canvas-container {
+  display: flex;
+  flex-direction: column; /* Stack canvas and button vertically */
+  align-items: center;
+  width: 100%; /* Full width on mobile */
+}
+
+canvas {
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 1 / 1; /* Ensures a square canvas */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px; /* Space between canvas and button */
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-family: 'NotoKufiArabic-VariableFont_wght.ttf', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #198754;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* Details Section */
+.details {
+  text-align: right;
+  width: 100%; /* Full width on mobile */
+}
+
+/* Responsive Design: Desktop Layout */
+@media (min-width: 768px) {
+  .frame-content {
+    flex-direction: row; /* Arrange canvas and details side by side */
+  }
+
+  .canvas-container {
+    flex: 1; /* Take up half the width */
+    max-width: 50%; /* Limit width */
+    align-items: flex-start; /* Align canvas and button to the left */
+    padding-right: 20px; /* Space between canvas and details */
+    margin-top: 130px; /* Add spacing to move canvas and button down */
+  }
+
+  .details {
+    padding-right: 50px; /* Space between canvas and details */
+    flex: 1; /* Take up half the width */
+    max-width: 50%; /* Limit width */
+  }
+}
+
+/* Mobile Layout: Canvas below details */
+@media (max-width: 767px) {
+  .frame-content {
+    flex-direction: column; /* Stack vertically */
+  }
+
+  .canvas-container {
+    order: 2; /* Move canvas below details */
+    align-items: center; /* Center canvas and button */
+    width: 100%; /* Full width */
+  }
+
+  .details {
+    order: 1; /* Ensure details appear first */
+    width: 100%; /* Full width */
+  }
+}
+    /* Animations */
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(20px); /* Start slightly below */
+        opacity: 0; /* Fully transparent */
+      }
+      100% {
+        transform: translateY(0); /* Move to original position */
+        opacity: 1; /* Fully visible */
+      }
+    }
+
+    @keyframes slideOutRight {
+      0% {
+        transform: translateX(0); /* Start in original position */
+      }
+      100% {
+        transform: translateX(100%); /* Slide completely out to the right */
+      }
+    }
+    .design-section {
+  text-align: right; /* Align all text to the right */
+  margin-bottom: 20px; /* Add spacing below the section */
+}
+
+.design-heading {
+  font-size: 1.3rem; /* Adjust font size */
+  font-weight: bold; /* Bold heading */
+  margin-bottom: 10px; /* Spacing below the heading */
+  background: linear-gradient(90deg, #3C8BFF 0%, #5E46FF 100%); /* Gradient */
+  -webkit-background-clip: text; /* Clips the background to the text */
+  -webkit-text-fill-color: transparent; /* Makes the text fill transparent to show the gradient */
+}
+
+.personal-heading {
+  font-size: 1.3rem; /* Adjust font size */
+  font-weight: bold; /* Bold heading */
+  margin-bottom: 10px; /* Space below the heading */
+  text-align: right; /* Align Arabic text to the right */
+  background: linear-gradient(90deg, #3C8BFF 0%, #5E46FF 100%); /* Gradient colors */
+  -webkit-background-clip: text; /* Clips the background to the text */
+  -webkit-text-fill-color: transparent; /* Makes the text transparent to show the gradient */
+  background-clip: text; /* For non-WebKit browsers */
+  text-fill-color: transparent; /* Fallback for older browsers */
+}
+
+.design-description {
+  font-size: 1rem; /* Font size for the description */
+  font-weight: normal; /* Normal font weight */
+  color: #646E77; /* Muted text color */
+  line-height: 1.6; /* Line spacing for readability */
+}
+
+
+    /* Card Options */
+    .card-options {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .card-options img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card-options img:hover {
+      transform: scale(1.05);
+    }
+
+    .card-options img.selected {
+      border-color: #5E46FF;
+      box-shadow: 0 0 8px #5E46FF;
+    }
+    /* Styling for Personal Details Section */
+.personal-details {
+  font-size: 1.3rem;
+  margin-top: 30px;
+  direction: rtl; /* النصوص باللغة العربية تكون باتجاه اليمين */
+  text-align: right; /* محاذاة النصوص إلى اليمين */
+}
+
+/* Heading Styling */
+.personal-heading {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1E252D;
+  margin-bottom: 10px;
+}
+
+/* Description Styling */
+.personal-description {
+  font-size: 1rem;
+  margin: 0 auto 20px;
+  max-width: 600px;
+  color: #646E77;
+  line-height: 1.6;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label Styling */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #333;
+}
+
+/* Input Styling */
+input[type="text"] {
+  width: 90%;
+  max-width: 720px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #F8FAFC;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+  font-family: 'NotoKufiArabic-VariableFont_wght.ttf', sans-serif;
+}
+
+input[type="text"]:focus {
+  border-color: #5E46FF; /* اللون الأخضر عند التركيز */
+  outline: none;
+  font-family: 'NotoKufiArabic-VariableFont_wght.ttf', sans-serif;
+
+}
+
+/* Arabic-specific inputs */
+input[dir="rtl"] {
+  text-align: right; /* محاذاة النص إلى اليمين */
+  font-family: 'NotoKufiArabic-VariableFont_wght.ttf', sans-serif;
+
+}
+
+
+    /* Button Styling */
+    button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      font-family: 'NotoKufiArabic-VariableFont_wght.ttf', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background-color: #5f46ffcc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #5E46FF;
+      transform: translateY(-2px);
+    }
+
+    /* Canvas Styling */
+    canvas {
+      margin: 0 auto 20px;
+      width: 100%;
+      max-width: 350px;
+      aspect-ratio: 1 / 1; /* Ensures a square canvas */
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    /* Welcome Animation Overlay */
+    .welcome-overlay {
+  position: fixed; /* Ensure it covers the entire viewport */
+  top: 0; /* Start at the very top */
+  left: 0; /* Start at the very left */
+  width: 100%; /* Full width of the viewport */
+  height: 100%; /* Full height of the viewport */
+  background-color: #5E46FF; /* Dark background for the overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500; /* Higher than the header's z-index */
+  animation: slideOutRight 0.3s ease-in-out 0.8s forwards; /* Slide out to the right */
+}
+
+/* Spinner Style */
+.spinner {
+  width: 90px;
+  height: 90px;
+  border: 3px solid #ffffff; /* Transparent border */
+  border-top: 3px solid #5f46ff; /* Visible border for spinning effect */
+  border-radius: 50%;
+  animation: spin 0.9s ease-in-out forwards; /* 0.9s duration, ease-in-out timing, and stops after one spin */
+  position: relative;
+}
+
+/* Spinner Logo */
+.spinner-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the logo inside the spinner */
+  width: 110px; /* Increase the width */
+  height: 110px; /* Increase the height */
+  background-image: url(''); /* Path to your logo */
+  background-size: contain; /* Ensure the logo scales properly */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    /* General Footer Styling */
+footer {
+  background-color: #000000; /* Footer background color */
+  color: #FFFFFF; /* Text color */
+  width: 100%; /* Full width */
+  padding: 40px 20px; /* Padding around the footer */
+  font-family: 'NotoKufiArabic', sans-serif;
+  direction: rtl; /* Right-to-left layout for Arabic */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.footer-content {
+  max-width: 1200px; /* Center the content */
+  margin: 0 auto; /* Center horizontally */
+  text-align: right; /* Align text to the right */
+}
+
+/* Footer Sections */
+.footer-sections {
+  display: flex; /* Flex layout for horizontal alignment */
+  flex-wrap: wrap; /* Allow sections to wrap for smaller screens */
+  gap: 15px; /* Close spacing between sections */
+  justify-content: space-between; /* Spread sections evenly */
+  align-items: flex-start; /* Align all sections to the top */
+}
+
+/* Individual Footer Section */
+.footer-section {
+  flex: 1; /* Equal space for all sections */
+  min-width: 200px; /* Minimum width for smaller screens */
+  max-width: 250px; /* Limit maximum width */
+  text-align: right; /* Align text to the right */
+}
+
+.footer-title {
+  font-size: 1.4rem; /* Title font size */
+  font-weight: bold; /* Bold titles */
+  margin-bottom: 10px; /* Spacing below titles */
+  color: #FFFFFF; /* White text color */
+}
+
+.footer-section ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+.footer-section li {
+  font-size: 0.9rem; /* Font size for list items */
+  margin-bottom: 6px; /* Reduce spacing between list items */
+  color: #D0D0D0; /* Light gray text color */
+}
+
+/* "ابق على اتصال" Section */
+.footer-stay-connected {
+  flex: 1; /* Same width as other sections */
+  min-width: 200px; /* Minimum width for smaller screens */
+  max-width: 250px; /* Limit maximum width */
+  text-align: right; /* Align content to the right */
+}
+
+.footer-stay-connected .social-icons {
+  display: flex; /* Align icons horizontally */
+  justify-content: flex-start; /* Align icons to the left */
+  gap: 35px; /* Close spacing between icons */
+  margin-top: 10px; /* Space above the icons */
+}
+
+.social-icon img {
+  width: 30px; /* Icon size */
+  height: 30px; /* Icon size */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.social-icon:hover img {
+  transform: scale(1.2); /* Enlarge icon on hover */
+}
+
+/* Footer Border */
+.footer-border {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  margin: 20px 0; /* Spacing above and below the border */
+}
+
+/* Copyright Section */
+.footer-copyright {
+  background-color: #A6A6A6; /* Darker footer background */
+  color: #FFFFFF; /* Text color */
+  display: flex; /* Flex layout for alignment */
+  justify-content: space-between; /* Space between left and right text */
+  align-items: center; /* Vertical alignment */
+  padding: 15px 20px; /* Padding around the text */
+  font-size: 0.9rem; /* Smaller font size */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.copyright-left,
+.copyright-right {
+  margin: 0; /* Remove margin */
+  text-align: center; /* Center-align text */
+  direction: rtl; /* Ensure proper alignment for Arabic */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-sections {
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center; /* Center-align sections */
+  }
+
+  .footer-section {
+    min-width: auto; /* Remove fixed width for sections */
+    text-align: center; /* Center-align text */
+  }
+
+  .footer-stay-connected .social-icons {
+    justify-content: center; /* Center social icons */
+  }
+
+  .footer-copyright {
+    flex-direction: column; /* Stack copyright text vertically */
+    text-align: center; /* Center-align text */
+  }
+}
+/* Keyframes for fadeInUp Animation */
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px); /* Start slightly below */
+    opacity: 0; /* Fully transparent */
+  }
+  100% {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Common animation class for all elements */
+.hidden {
+  opacity: 0; /* Ensure elements are hidden initially */
+  transform: translateY(20px); /* Position slightly below the original position */
+}
+
+.fade-in {
+  animation-name: fadeInUp;
+  animation-duration: 1s; /* Animation duration */
+  animation-fill-mode: both; /* Keep the final state after animation */
+  animation-timing-function: ease-out;
+}
+
+/* Base Styling for SAMI Logo (Default for Small Screens) */
+.footer-logo {
+  position: relative; /* Allow precise positioning */
+  margin: 0 auto; /* Center-align the logo on small screens */
+  display: block; /* Keep the logo block-level */
+  height: 80px; /* Adjust logo height */
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Large Screen Styling */
+@media (min-width: 1024px) {
+  .footer-logo {
+    position: relative;
+    left: 60; /* Avoid pushing it too far */
+    margin-right: 0px; /* Use margins instead of left for alignment */
+  }
+}
+  </style>
+</head>
+<body>
+  <!-- Welcome Animation -->
+  <div class="welcome-overlay">
+    <div class="spinner"></div>
+    <div class="spinner-logo"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <!-- LinkedIn Icon and Name -->
+    <div class="header-logo">
+      <a href="https://www.linkedin.com/in/faisal-al-alsheikh-870351245?originalSubdomain=sa" target="_blank" class="linkedin-link">
+        <img src="linkedin (2) 2.png" alt="LinkedIn Icon" class="linkedin-icon" />
+        <span class="name-text">Faisal Al Alsheikh</span>
+      </a>
+    </div>
+  
+    <!-- Dropdown Button -->
+    <div class="dropdown-container">
+      <button id="menuButton" class="menu-button">
+        القائمة
+      </button>
+      <!-- Dropdown Menu -->
+      <div id="dropdownMenu" class="dropdown-menu">
+        <a href="#footer" class="scroll-to" data-target="footer">عنّي</a>
+        <a href="#footer" class="scroll-to" data-target="footer">تواصل معي</a>
+        <a href="#custom-greeting-cards" class="scroll-to" data-target="custom-greeting-cards">ابدأ التصميم</a>
+      </div>
+    </div>
+  </header>
+  
+  <script>
+    // Dropdown Toggle Functionality
+const menuButton = document.getElementById('menuButton');
+const dropdownMenu = document.getElementById('dropdownMenu');
+
+// Toggle the menu visibility when the button is clicked
+menuButton.addEventListener('click', () => {
+  const isMenuVisible = dropdownMenu.style.display === 'block';
+  dropdownMenu.style.display = isMenuVisible ? 'none' : 'block';
+});
+
+// Close the menu if clicked outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown-container')) {
+    dropdownMenu.style.display = 'none';
+  }
+});
+  </script>
+
+  <!-- Banner -->
+
+  <!-- Enhanced Banner Section -->
+  <section class="banner">
+    <div class="banner-container">
+      <!-- Infographic (Left) -->
+      <div class="banner-infographic">
+        <img src="Infogfrafic (4).png" alt="Infographic" class="infographic-image">
+      </div>
+  
+      <!-- Content (Right) -->
+      <div class="banner-content">
+        <h1 dir="rtl" class="banner-title">صمم بطاقتك المثالية بسهولة وسرعة!</h1>
+        <p dir="rtl" class="banner-description">
+          اختر من بين مجموعة متنوعة من قوالب بطاقات عيد الفطر الأنيقة، أضف لمساتك الشخصية، وشارك الفرحة مع أحبائك ببطاقتك الفريدة.
+        </p>
+        <div class="banner-button-area" style="text-align: right; margin-top: 20px;">
+          <button class="start-now-button scroll-to" data-target="custom-greeting-cards">ابدأ الآن</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="banner-subtitle-area" id="custom-greeting-cards">
+  <p class="banner-subtitle"><span>بطاقات تهنئة قابلة للتخصيص</span></p>
+</div>
+
+  <!-- Main Content -->
+  <div class="frame" id="start-design">
+    <div class="frame-content">
+      <!-- Canvas and Button Container -->
+      <div class="canvas-container">
+        <canvas id="cardCanvas"></canvas>
+        <button id="downloadButton">حمّل بطاقتك الآن</button>
+      </div>
+  
+      <!-- Details Section -->
+      <div class="details">
+        <div class="design-section" dir="rtl">
+          <h2 class="design-heading">اختر تصميم البطاقة</h2>
+          <p class="design-description">
+            استعرض مجموعة من التصاميم الجميلة واختر التصميم الذي يناسبك.
+          </p>
+        </div>
+        <div class="card-options">
+          <img src="Frame Eid 1.png" alt="Card 1" id="card1" class="card-thumbnail">
+          <img src="Frame Eid 2.png" alt="Card 2" id="card2" class="card-thumbnail">
+          <img src="Frame Eid 3.png" alt="Card 3" id="card3" class="card-thumbnail">
+        </div>
+        <div class="personal-details">
+          <h2 class="personal-heading">أدخل التفاصيل الشخصية الخاصة بك</h2>
+          <p class="personal-description">املأ الحقول أدناه لتخصيص البطاقة بمعلوماتك.</p>
+          
+          <!-- Arabic Name -->
+          <div class="form-group">
+            <label for="arabicName">الاسم (باللغة العربية)</label>
+            <input type="text" id="arabicName" placeholder="أدخل اسمك هنا" dir="rtl">
+          </div>
+          
+          <!-- English Name -->
+          <div class="form-group">
+            <label for="englishName">الاسم (باللغة الإنجليزية)</label>
+            <input type="text" id="englishName" placeholder="أدخل اسمك هنا">
+          </div>
+          
+          <!-- Arabic Position -->
+          <div class="form-group">
+            <label for="arabicPosition">المسمى الوظيفي (باللغة العربية)</label>
+            <input type="text" id="arabicPosition" placeholder="أدخل المسمى الوظيفي هنا" dir="rtl">
+          </div>
+          
+          <!-- English Position -->
+          <div class="form-group">
+            <label for="englishPosition">المسمى الوظيفي (باللغة الإنجليزية)</label>
+            <input type="text" id="englishPosition" placeholder="أدخل المسمى الوظيفي هنا">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+      <!-- Personal Branding -->
+      <h2 class="footer-title" style="text-align: center; font-size: 1.5rem; color: #FFFFFF;">
+        <span><strong></strong></span>
+      </h2>
+      <div class="footer-border"></div>
+  
+      <!-- About Me Section -->
+      <div class="footer-sections">
+        <div class="footer-section">
+          <h3 class="footer-title">عنّي</h3>
+          <p style="color: #D0D0D0; font-size: 0.95rem;">
+            أنا متخصص في تصميم الويب والتسويق الرقمي، شغوف بـ تطوير البرمجيات والأعمال الإبداعية. 
+            أطلقت هذا المشروع لتسهيل تصميم بطاقات التهنئة المخصصة بمناسبة عيد الفطر، ومشاركة شغفي بالإبداع مع الآخرين.
+          </p>
+        </div>
+  
+        <!-- Contact Section -->
+        <div class="footer-section footer-stay-connected">
+          <h3 class="footer-title">ابقَ على اتصال</h3>
+          <div class="social-icons">
+            <!-- LinkedIn Icon -->
+            <a href="https://www.linkedin.com/in/faisal-al-alsheikh-870351245?originalSubdomain=sa" target="_blank" class="social-icon" aria-label="LinkedIn">
+              <img src="linkedin (2) 1.png" alt="LinkedIn Icon">
+            </a>
+            <!-- Email Icon -->
+            <a href="mailto:F.alsheikh1@outlook.com" class="social-icon" aria-label="Email">
+              <img src="Outlook (1).png" alt="Email Icon">
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Acknowledgment -->
+      <p style="text-align: center; color: #D0D0D0; font-size: 0.9rem; margin-top: 20px;">
+        هذا المشروع عبارة عن صفحة ويب شخصية تهدف إلى تسهيل تصميم بطاقات التهنئة وتقديم تجربة إبداعية وممتعة للمستخدمين بمناسبة عيد الفطر.
+      </p>
+  
+      <!-- Copyright -->
+      <div class="footer-border"></div>
+      <p style="text-align: center; color: #FFFFFF; font-size: 0.85rem; margin-top: 10px;">
+        © 2025 جميع الحقوق محفوظة.<strong></strong>
+      </p>
+    </div>
+  </footer>
+  <script>
+    document.body.style.overflow = 'hidden';
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.body.style.overflow = 'auto';
+      }, 2500); // Matches fade-out duration
+    });
+
+    const cardThumbnails = document.querySelectorAll('.card-thumbnail');
+    const canvas = document.getElementById('cardCanvas');
+    const ctx = canvas.getContext('2d');
+    const downloadButton = document.getElementById('downloadButton');
+
+    const englishNameInput = document.getElementById('englishName');
+    const englishPositionInput = document.getElementById('englishPosition');
+    const arabicNameInput = document.getElementById('arabicName');
+    const arabicPositionInput = document.getElementById('arabicPosition');
+
+    let selectedCard = 'Frame Eid 3.png'; // Default card
+
+    canvas.width = 1080;
+    canvas.height = 1080;
+
+    function loadCard() {
+      const img = new Image();
+      img.src = selectedCard;
+      img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        addText();
+      };
+    }
+
+    function addText() {
+  const englishName = englishNameInput.value.trim();
+  const englishPosition = englishPositionInput.value.trim();
+  const arabicName = arabicNameInput.value.trim();
+  const arabicPosition = arabicPositionInput.value.trim();
+
+  document.fonts.ready.then(() => {
+    const img = new Image();
+    img.src = selectedCard;
+
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // English Name
+      ctx.font = 'bold 40px "DIN Next LT Arabic"';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'left';
+      ctx.fillText(englishName, 50, canvas.height - 140);
+
+      // English Position
+      ctx.font = 'normal 30px "DIN Next LT Arabic"';
+      ctx.fillText(englishPosition, 50, canvas.height - 90);
+
+      // Arabic Name
+      ctx.font = 'bold 40px "DIN Next LT Arabic"';
+      ctx.textAlign = 'right';
+      ctx.direction = 'rtl';
+      ctx.fillText(arabicName, canvas.width - 50, canvas.height - 140);
+
+      // Arabic Position
+      ctx.font = 'normal 30px "DIN Next LT Arabic"';
+      ctx.fillText(arabicPosition, canvas.width - 50, canvas.height - 90);
+    };
+  });
+}
+
+    englishNameInput.addEventListener('input', loadCard);
+    englishPositionInput.addEventListener('input', loadCard);
+    arabicNameInput.addEventListener('input', loadCard);
+    arabicPositionInput.addEventListener('input', loadCard);
+
+    cardThumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        cardThumbnails.forEach(img => img.classList.remove('selected'));
+        thumbnail.classList.add('selected');
+        selectedCard = thumbnail.src;
+        loadCard();
+      });
+    });
+
+    downloadButton.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = 'customized-card.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    loadCard();
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // List of elements in the order they should animate
+      const elements = [
+        document.querySelector(".banner-title"),
+        document.querySelector(".banner-description"),
+        document.querySelector(".banner-subtitle-area"),
+        document.querySelector(".frame"),
+        document.querySelector("footer")
+      ];
+  
+      // Add the 'hidden' class to all elements initially
+      elements.forEach((el) => el.classList.add("hidden"));
+  
+      // Create an Intersection Observer
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = elements.indexOf(entry.target); // Get the element's order
+  
+              // No delay for footer
+              if (entry.target.tagName === "FOOTER") {
+                entry.target.style.animationDelay = "0s"; // Footer appears immediately
+              } else {
+                const delay = index * 0.3; // Faster sequence (0.3s delay per element)
+                entry.target.style.animationDelay = `${delay}s`;
+              }
+  
+              entry.target.classList.add("fade-in"); // Add animation class
+              observer.unobserve(entry.target); // Stop observing after animation
+            }
+          });
+        },
+        {
+          threshold: 0.1, // Trigger when 10% of the element is visible
+        }
+      );
+  
+      // Observe each element
+      elements.forEach((el) => observer.observe(el));
+    });
+  </script>
+  <script>
+    // Smooth Scrolling for Navbar Links
+    document.querySelectorAll('.scroll-to').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default anchor behavior
+        const targetId = link.getAttribute('data-target'); // Get the target section ID
+        const targetElement = document.getElementById(targetId); // Find the target element
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' }); // Smoothly scroll to the section
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
