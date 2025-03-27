@@ -35,8 +35,6 @@
       padding-top: 88px; /* Match the height of the fixed header */
       font-family: 'NotoKufiArabic', sans-serif;
       background-image: linear-gradient(90deg, #3C8BFF 1%, #5E46FF 100%);
-      
-      ;
       background-size: cover;
       display: flex;
       flex-direction: column; /* Allow stacking of elements */
@@ -198,7 +196,9 @@
     color: transparent;
     font-size: 2rem;
     margin-bottom: 25px;
-    line-height: 1.4;
+    line-height: 1.2; /* Explicitly set a line height to avoid extra spacing */
+  letter-spacing: 0; /* Reset letter spacing */
+  word-spacing: 0; /* Reset word spacing */
 }
 
 .banner-description {
@@ -281,6 +281,26 @@
     .banner-description {
         font-size: 1rem;
     }
+}
+
+.start-now-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 5px 15px;
+  font-family: 'NotoKufiArabic', sans-serif; /* Use Noto Kufi Arabic font */
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #5f46ffcc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.start-now-button:hover {
+  background-color: #5E46FF;
+  transform: translateY(-2px);
 }
 
 /* Infographic Section */
@@ -558,6 +578,10 @@ button:hover {
 
 .design-heading {
   font-size: 1.3rem; /* Adjust font size */
+  color: #5E46FF; /* Purple color */
+  line-height: 1.2; /* Prevent extra spacing */
+  letter-spacing: 0; /* Reset letter spacing */
+  word-spacing: 0; /* Reset word spacing */
   font-weight: bold; /* Bold heading */
   margin-bottom: 10px; /* Spacing below the heading */
   background: linear-gradient(90deg, #3C8BFF 0%, #5E46FF 100%); /* Gradient */
@@ -651,30 +675,40 @@ label {
   color: #333;
 }
 
-/* Input Styling */
+/* General Input Styling */
 input[type="text"] {
-  width: 90%;
-  max-width: 720px;
+  width: 90%; /* Full width with some padding */
+  max-width: 720px; /* Limit the width */
   padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #F8FAFC;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
-  font-family: 'NotoKufiArabic-VariableFont_wght.ttf', sans-serif;
+  font-family: 'NotoKufiArabic', sans-serif; /* Use Noto Kufi Arabic font */
+  font-size: 0.8rem; /* Match the size of the other elements */
+  font-weight: 400; /* Normal weight for input text */
+  color: #333; /* Text color */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  transition: border-color 0.3s ease; /* Smooth border color transition */
+  box-sizing: border-box; /* Include padding in the width */
 }
 
 input[type="text"]:focus {
-  border-color: #5E46FF; /* اللون الأخضر عند التركيز */
-  outline: none;
-  font-family: 'NotoKufiArabic-VariableFont_wght.ttf', sans-serif;
+  border-color: #5E46FF; /* Purple border on focus */
+  outline: none; /* Remove default outline */
+}
 
+/* Placeholder Styling */
+input::placeholder {
+  font-family: 'NotoKufiArabic', sans-serif; /* Match the font */
+  font-size: 0.8rem; /* Same size as input text */
+  font-weight: 400; /* Normal weight for placeholder */
+  color: #888; /* Light gray placeholder text */
+  direction: rtl; /* Support Arabic placeholders */
+  text-align: right; /* Align placeholder text to the right */
 }
 
 /* Arabic-specific inputs */
 input[dir="rtl"] {
-  text-align: right; /* محاذاة النص إلى اليمين */
-  font-family: 'NotoKufiArabic-VariableFont_wght.ttf', sans-serif;
-
+  text-align: right; /* Align text to the right */
+  font-family: 'NotoKufiArabic', sans-serif; /* Use Noto Kufi Arabic font */
 }
 
 
@@ -698,6 +732,25 @@ input[dir="rtl"] {
       background-color: #5E46FF;
       transform: translateY(-2px);
     }
+    .custom-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 5px 17px;
+  font-family: 'NotoKufiArabic', sans-serif; /* Use Noto Kufi Arabic font */
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #5f46ffcc; /* Semi-transparent purple */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-button:hover {
+  background-color: #5E46FF;
+  transform: translateY(-2px);
+}
 
     /* Canvas Styling */
     canvas {
@@ -796,10 +849,19 @@ footer {
 }
 
 .footer-title {
-  font-size: 1.4rem; /* Title font size */
-  font-weight: bold; /* Bold titles */
-  margin-bottom: 10px; /* Spacing below titles */
+  font-family: 'NotoKufiArabic', sans-serif; /* Use Noto Kufi Arabic font */
+  font-size: 1.4rem; /* Adjust font size as needed */
+  font-weight: bold; /* Make the text bold */
   color: #FFFFFF; /* White text color */
+  line-height: 1.2; /* Prevent extra line spacing */
+  letter-spacing: 0; /* Reset letter spacing */
+  word-spacing: 0; /* Reset word spacing */
+  text-align: center; /* Center the text */
+  margin: 10px 0; /* Add balanced spacing */
+  -webkit-font-smoothing: antialiased; /* Smoothen font rendering on iOS */
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block; /* Prevent block-level rendering issues */
+  direction: rtl; /* Ensure proper alignment for Arabic */
 }
 
 .footer-section ul {
@@ -996,7 +1058,7 @@ document.addEventListener('click', (e) => {
           اختر من بين مجموعة متنوعة من قوالب بطاقات عيد الفطر الأنيقة، أضف لمساتك الشخصية، وشارك الفرحة مع أحبائك ببطاقتك الفريدة.
         </p>
         <div class="banner-button-area" style="text-align: right; margin-top: 20px;">
-          <button class="start-now-button scroll-to" data-target="custom-greeting-cards">ابدأ الآن</button>
+          <button class="custom-button scroll-to" data-target="custom-greeting-cards">ابدأ الآن</button>
         </div>
       </div>
     </div>
@@ -1012,7 +1074,7 @@ document.addEventListener('click', (e) => {
       <!-- Canvas and Button Container -->
       <div class="canvas-container">
         <canvas id="cardCanvas"></canvas>
-        <button id="downloadButton">حمّل بطاقتك الآن</button>
+        <button id="downloadButton" class="custom-button">حمّل بطاقتك الآن</button>
       </div>
   
       <!-- Details Section -->
